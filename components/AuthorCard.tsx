@@ -20,13 +20,13 @@ export function AuthorCard({ author }: AuthorCardProps) {
           </p>
           <p className="text-sm text-white/55 truncate">@{author.login}</p>
         </div>
-        
+
         {author.bio && (
           <p className="text-sm leading-relaxed text-[var(--muted)] line-clamp-3">
             {author.bio}
           </p>
         )}
-        
+
         <Link
           href={author.profileUrl}
           target="_blank"
