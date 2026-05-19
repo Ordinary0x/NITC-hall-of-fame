@@ -1,0 +1,22 @@
+[
+  {
+    "project": "https://github.com/simonMat21/petal",
+    "author": "https://github.com/simonMat21",
+    "description": "A Go tool that renders images directly inside the terminal."
+  },
+  {
+    "project": "https://github.com/simonMat21/Visual-Learner",
+    "author": "https://github.com/simonMat21",
+    "description": "A modern, interactive web application that brings data structures and algorithms to life through stunning visualizations."
+  },
+  {
+    "project": "https://github.com/simonMat21/Tideon.js",
+    "author": "https://github.com/simonMat21",
+    "description": "Lightweight, extensible JavaScript animation engine designed for creating smooth and expressive UI and canvas animations with minimal effort."
+  },
+  {
+    "project": "https://github.com/PR202111/e-KYC-JMR",
+    "author": "https://github.com/PR202111",
+    "description": "A full-stack eKYC verification portal with OTP authentication and document management."
+  }
+]

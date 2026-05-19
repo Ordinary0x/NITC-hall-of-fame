@@ -1,0 +1,107 @@
+"use client";
+
+import { useDeferredValue, useState } from "react";
+import { FilterBar } from "@/components/FilterBar";
+import { ProjectCard } from "@/components/ProjectCard";
+import {
+  getAllTopics,
+  getAvailableLanguages,
+  sortProjects,
+  type ProjectRecord,
+  type SortKey,
+} from "@/lib/project-utils";
+
+type ProjectBrowserProps = {
+  projects: ProjectRecord[];
+};
+
+export function ProjectBrowser({ projects }: ProjectBrowserProps) {
+  const [query, setQuery] = useState("");
+  const [language, setLanguage] = useState("All languages");
+  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [sortBy, setSortBy] = useState<SortKey>("stars");
+  const deferredQuery = useDeferredValue(query);
+
+  const languages = getAvailableLanguages(projects);
+  const topicOptions = getAllTopics(projects);
+
+  const visibleProjects = sortProjects(
+    projects.filter((project) => {
+      const haystack = [
+        project.title,
+        project.description,
+        project.author.name,
+        project.author.login,
+        project.repoUrl,
+      ]
+        .join(" ")
+        .toLowerCase();
+
+      const queryMatch =
+        deferredQuery.trim() === "" ||
+        haystack.includes(deferredQuery.trim().toLowerCase());
+      const languageMatch =
+        language === "All languages" || project.language === language;
+      const topicMatch =
+        selectedTopics.length === 0 ||
+        selectedTopics.some((topic: string) => project.topics.includes(topic));
+
+      return queryMatch && languageMatch && topicMatch;
+    }),
+    sortBy,
+  );
+
+  return (
+    <section className="space-y-6">
+      <FilterBar
+        query={query}
+        onQueryChange={setQuery}
+        language={language}
+        onLanguageChange={setLanguage}
+        languages={languages}
+        selectedTopics={selectedTopics}
+        onToggleTopic={(topic) => {
+          setSelectedTopics((current) =>
+            current.includes(topic)
+              ? current.filter((value: string) => value !== topic)
+              : [...current, topic],
+          );
+        }}
+        topicOptions={topicOptions}
+        sortBy={sortBy}
+        onSortByChange={setSortBy}
+        onClearFilters={() => {
+          setQuery("");
+          setLanguage("All languages");
+          setSelectedTopics([]);
+          setSortBy("stars");
+        }}
+        resultCount={visibleProjects.length}
+        totalCount={projects.length}
+      />
+
+      {visibleProjects.length > 0 ? (
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {visibleProjects.map((project) => (
+            <ProjectCard key={project.repoUrl} project={project} />
+          ))}
+        </div>
+      ) : (
+        <div className="glass-panel rounded-[2rem] px-6 py-16 text-center sm:px-10">
+          <div className="mx-auto max-w-2xl space-y-4">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-maroon-300/25 bg-maroon-500/15 text-3xl text-maroon-100">
+              ✦
+            </div>
+            <h3 className="font-[var(--font-display)] text-3xl text-[var(--text)]">
+              No projects match those filters
+            </h3>
+            <p className="text-sm leading-6 text-[var(--muted)]">
+              Try widening the search, clearing a topic chip, or switching back
+              to all languages.
+            </p>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
