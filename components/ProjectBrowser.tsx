@@ -81,18 +81,18 @@ export function ProjectBrowser({ projects }: ProjectBrowserProps) {
       />
 
       {visibleProjects.length > 0 ? (
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {visibleProjects.map((project) => (
             <ProjectCard key={project.repoUrl} project={project} />
           ))}
         </div>
       ) : (
-        <div className="glass-panel rounded-[2rem] px-6 py-16 text-center sm:px-10">
-          <div className="mx-auto max-w-2xl space-y-4">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-maroon-300/25 bg-maroon-500/15 text-3xl text-maroon-100">
+        <div className="panel rounded-xl px-6 py-14 text-center sm:px-10">
+          <div className="mx-auto max-w-md space-y-3">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg border border-maroon-500/20 bg-maroon-600/10 text-lg text-maroon-200">
               ✦
             </div>
-            <h3 className="font-[var(--font-display)] text-3xl text-[var(--text)]">
+            <h3 className="font-[var(--font-display)] text-2xl text-[var(--text)]">
               No projects match those filters
             </h3>
             <p className="text-sm leading-6 text-[var(--muted)]">

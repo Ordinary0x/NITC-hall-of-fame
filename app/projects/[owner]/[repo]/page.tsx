@@ -127,9 +127,28 @@ function GithubIcon() {
   );
 }
 
+function GlobeIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className="h-4 w-4 opacity-70"
+      stroke="currentColor"
+    >
+      <path d="M12 21a9 9 0 100-18 9 9 0 000 18Z" strokeWidth="1.6" />
+      <path d="M3.5 12h17" strokeWidth="1.6" />
+      <path
+        d="M12 3c2.5 2.2 4 5.2 4 9s-1.5 6.8-4 9c-2.5-2.2-4-5.2-4-9s1.5-6.8 4-9Z"
+        strokeWidth="1.6"
+      />
+    </svg>
+  );
+}
+
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 px-2.5 py-1 text-[11px] uppercase tracking-widest text-white/50">
+    <span className="inline-flex items-center gap-1.5 rounded-md border border-[var(--border)] px-2 py-0.5 text-[10px] uppercase tracking-widest text-white/50">
       {children}
     </span>
   );
@@ -143,13 +162,13 @@ function SidebarCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a]">
-      <div className="border-b border-white/[0.06] bg-white/[0.02] px-4 py-2.5">
+    <div className="overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)]">
+      <div className="border-b border-[var(--border)] bg-[#141414] px-3 py-2">
         <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/30">
           {title}
         </span>
       </div>
-      <div className="p-4">{children}</div>
+      <div className="p-3">{children}</div>
     </div>
   );
 }
@@ -168,27 +187,38 @@ export default async function ProjectPage({
   const repoParts = parseRepoUrl(project.repoUrl);
 
   return (
-    <div className="pb-20">
+    <div className="pb-16">
       {/* Top Navigation */}
-      <div className="flex items-center justify-between py-6">
+      <div className="flex items-center justify-between py-4">
         <Link
           href="/"
-          className="group flex items-center gap-2 rounded-lg border border-white/10 px-3.5 py-2 text-sm text-white/50 transition-colors hover:border-white/20 hover:text-white/80"
+          className="flex items-center gap-1.5 rounded-lg border border-[var(--border)] px-3 py-1.5 text-sm text-white/50 transition-colors hover:border-white/20 hover:text-white/80"
         >
-          <span className="transition-transform group-hover:-translate-x-0.5">
-            ←
-          </span>
+          <span className="transition-transform">←</span>
           All Projects
         </Link>
-        <a
-          href={project.repoUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-2 rounded-lg border border-white/10 px-3.5 py-2 text-sm text-white/70 transition-colors hover:border-white/20 hover:text-white"
-        >
-          <GithubIcon />
-          Repository
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1.5 rounded-lg border border-[var(--border)] px-3 py-1.5 text-sm text-white/70 transition-colors hover:border-white/20 hover:text-white"
+          >
+            <GithubIcon />
+            Repository
+          </a>
+          {project.website ? (
+            <a
+              href={project.website}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 rounded-lg border border-[var(--border)] px-3 py-1.5 text-sm text-white/70 transition-colors hover:border-white/20 hover:text-white"
+            >
+              <GlobeIcon />
+              Website
+            </a>
+          ) : null}
+        </div>
       </div>
 
       {/* Hero */}
@@ -206,44 +236,44 @@ export default async function ProjectPage({
           </div>
 
           {/* Title */}
-          <h1 className="mb-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h1 className="mb-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {project.title}
           </h1>
 
           {/* Description */}
-          <p className="max-w-xl text-lg leading-relaxed text-white/50">
+          <p className="max-w-xl text-base leading-relaxed text-white/50">
             {project.description}
           </p>
 
           {/* Slug */}
           {repoParts && (
-            <p className="mt-3 font-mono text-xs text-white/25">
+            <p className="mt-2 font-mono text-xs text-white/25">
               {repoParts.owner} / {repoParts.repo}
             </p>
           )}
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 lg:flex lg:w-48 lg:shrink-0 lg:flex-col overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a]">
-          <div className="flex items-center gap-2 border-r lg:border-r-0 lg:border-b border-white/[0.06] px-5 py-3.5">
+        <div className="flex rounded-lg border border-[var(--border)] bg-[var(--surface)]">
+          <div className="flex items-center gap-2 border-r border-[var(--border)] px-4 py-3">
             <span className="text-white/30">
               <StarIcon />
             </span>
             <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/30">
               Stars
             </span>
-            <span className="ml-auto font-mono text-xl lg:text-2xl font-medium text-white">
+            <span className="ml-2 font-mono text-lg font-medium text-white">
               {project.stars.toLocaleString()}
             </span>
           </div>
-          <div className="flex items-center gap-2 px-5 py-3.5">
+          <div className="flex items-center gap-2 px-4 py-3">
             <span className="text-white/30">
               <ForkIcon />
             </span>
             <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/30">
               Forks
             </span>
-            <span className="ml-auto font-mono text-xl lg:text-2xl font-medium text-white">
+            <span className="ml-2 font-mono text-lg font-medium text-white">
               {project.forks.toLocaleString()}
             </span>
           </div>
@@ -251,42 +281,45 @@ export default async function ProjectPage({
       </div>
 
       {/* Updated timestamp */}
-      <div className="mb-8 flex items-center gap-1.5 border-b border-white/[0.06] pb-8 text-xs text-white/25">
+      <div className="mb-6 flex items-center gap-1.5 border-b border-[var(--border)] pb-4 text-xs text-white/25">
         <ClockIcon />
         Updated {formatUpdatedDate(project.lastUpdated)}
       </div>
 
-      {/* Gallery */}
-      <div className="mb-10 overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0a] p-4 lg:p-6">
-        <Gallery
-          title={project.title}
-          screenshots={project.screenshots}
-          thumbnail={project.thumbnail}
-        />
-      </div>
+      {/* Gallery (only show when there are images) */}
+      {(project.screenshots && project.screenshots.length > 0) ||
+      (project.thumbnail && !project.thumbnail.startsWith("data:")) ? (
+        <div className="mb-8 overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)] p-3 lg:p-4">
+          <Gallery
+            title={project.title}
+            screenshots={project.screenshots}
+            thumbnail={project.thumbnail}
+          />
+        </div>
+      ) : null}
 
       {/* Content + Sidebar */}
-      <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1fr_280px] lg:gap-10">
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[1fr_260px] lg:gap-8 overflow-hidden">
         {/* Main column */}
-        <div className="space-y-8">
+        <div className="space-y-6 min-w-0">
           {/* About */}
           <section>
-            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/25">
+            <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-white/25">
               About
             </p>
-            <p className="text-base leading-relaxed text-white/60">
+            <p className="text-sm leading-relaxed text-white/60">
               {project.readmeDescription ?? project.description}
             </p>
           </section>
 
-          <hr className="border-white/[0.06]" />
+          <hr className="border-[var(--border)]" />
 
           {/* README */}
           {project.readmeMarkdown ? (
             <section>
-              <div className="overflow-hidden rounded-xl border border-white/10">
+              <div className="overflow-hidden rounded-lg border border-[var(--border)]">
                 {/* File tab header */}
-                <div className="flex items-center gap-2 border-b border-white/[0.06] bg-white/[0.02] px-4 py-2.5">
+                <div className="flex items-center gap-2 border-b border-[var(--border)] bg-[#141414] px-3 py-2">
                   <span className="text-white/30">
                     <FileTextIcon />
                   </span>
@@ -296,51 +329,51 @@ export default async function ProjectPage({
                 </div>
 
                 {/* Markdown content */}
-                <div className="markdown-wrapper p-6 sm:p-8">
+                <div className="markdown-wrapper p-5 sm:p-6">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeHighlight]}
                     components={{
                       h1: ({ node, ...props }) => (
                         <h1
-                          className="mb-5 mt-10 text-2xl font-semibold tracking-tight text-white first:mt-0"
+                          className="mb-4 mt-8 text-xl font-semibold tracking-tight text-white first:mt-0"
                           {...props}
                         />
                       ),
                       h2: ({ node, ...props }) => (
                         <h2
-                          className="mb-3 mt-8 text-xl font-semibold tracking-tight text-white"
+                          className="mb-3 mt-6 text-lg font-semibold tracking-tight text-white"
                           {...props}
                         />
                       ),
                       h3: ({ node, ...props }) => (
                         <h3
-                          className="mb-3 mt-6 text-base font-semibold text-white"
+                          className="mb-2 mt-5 text-base font-semibold text-white"
                           {...props}
                         />
                       ),
                       p: ({ node, ...props }) => (
                         <p
-                          className="mb-4 text-sm leading-relaxed text-white/55 last:mb-0"
+                          className="mb-3 text-sm leading-relaxed text-white/55 last:mb-0"
                           {...props}
                         />
                       ),
                       ul: ({ node, ...props }) => (
                         <ul
-                          className="mb-4 ml-5 list-outside list-disc space-y-1.5 text-sm text-white/55"
+                          className="mb-3 ml-4 list-outside list-disc space-y-1 text-sm text-white/55"
                           {...props}
                         />
                       ),
                       ol: ({ node, ...props }) => (
                         <ol
-                          className="mb-4 ml-5 list-outside list-decimal space-y-1.5 text-sm text-white/55"
+                          className="mb-3 ml-4 list-outside list-decimal space-y-1 text-sm text-white/55"
                           {...props}
                         />
                       ),
                       li: ({ node, ...props }) => (
                         <li className="leading-relaxed" {...props} />
                       ),
-                      code: ({ node, inline, ...props }) =>
+                      code: ({ node, inline, ...props }: any) =>
                         inline ? (
                           <code
                             className="rounded bg-white/[0.07] px-1.5 py-0.5 font-mono text-xs text-white/70"
@@ -351,7 +384,7 @@ export default async function ProjectPage({
                         ),
                       pre: ({ node, ...props }) => (
                         <pre
-                          className="mb-4 overflow-x-auto rounded-lg border border-white/[0.06] bg-[#0d0d0d] p-4 font-mono text-xs leading-relaxed"
+                          className="mb-3 overflow-x-auto rounded-lg border border-[var(--border)] bg-[#0d0d0d] p-4 font-mono text-xs leading-relaxed"
                           {...props}
                         />
                       ),
@@ -363,7 +396,7 @@ export default async function ProjectPage({
                       ),
                       blockquote: ({ node, ...props }) => (
                         <blockquote
-                          className="mb-4 border-l border-white/20 pl-4 italic text-white/40"
+                          className="mb-3 border-l border-white/20 pl-4 italic text-white/40"
                           {...props}
                         />
                       ),
@@ -375,7 +408,7 @@ export default async function ProjectPage({
               </div>
             </section>
           ) : (
-            <section className="rounded-xl border border-white/10 p-10 text-center">
+            <section className="rounded-lg border border-[var(--border)] p-8 text-center">
               <p className="text-sm text-white/30">
                 No README documentation available for this repository.
               </p>
@@ -392,9 +425,9 @@ export default async function ProjectPage({
 
           {/* Details */}
           <SidebarCard title="Details">
-            <dl className="space-y-0 divide-y divide-white/[0.05]">
+            <dl className="space-y-0 divide-y divide-white/5">
               {project.language && (
-                <div className="flex items-center justify-between py-2.5 first:pt-0 last:pb-0">
+                <div className="flex items-center justify-between py-2 first:pt-0 last:pb-0">
                   <dt className="text-xs text-white/30">Language</dt>
                   <dd className="font-mono text-xs text-white/60">
                     {project.language}
@@ -402,14 +435,14 @@ export default async function ProjectPage({
                 </div>
               )}
               {project.license && (
-                <div className="flex items-center justify-between py-2.5 first:pt-0 last:pb-0">
+                <div className="flex items-center justify-between py-2 first:pt-0 last:pb-0">
                   <dt className="text-xs text-white/30">License</dt>
                   <dd className="font-mono text-xs text-white/60">
                     {project.license}
                   </dd>
                 </div>
               )}
-              <div className="flex items-center justify-between py-2.5 first:pt-0 last:pb-0">
+              <div className="flex items-center justify-between py-2 first:pt-0 last:pb-0">
                 <dt className="text-xs text-white/30">Updated</dt>
                 <dd className="font-mono text-xs text-white/60">
                   {formatUpdatedDate(project.lastUpdated)}
@@ -425,7 +458,7 @@ export default async function ProjectPage({
                 {project.topics.map((topic) => (
                   <span
                     key={topic}
-                    className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] text-white/50"
+                    className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 text-[10px] text-white/50"
                   >
                     {topic}
                   </span>

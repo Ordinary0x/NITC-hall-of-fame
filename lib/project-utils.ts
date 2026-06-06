@@ -10,6 +10,7 @@ export type ProjectRecord = {
   lastUpdated: string;
   screenshots: string[];
   thumbnail: string;
+  website?: string | null;
   author: {
     login: string;
     name: string;

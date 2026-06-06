@@ -44,23 +44,23 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
       <body className="font-[var(--font-body)] text-[var(--text)] antialiased">
-        <div className="relative isolate min-h-screen overflow-hidden">
-          <header className="sticky top-0 z-40 border-b border-white/10 bg-black/35 backdrop-blur-xl">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen">
+          <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg)]">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
               <a
                 href="/"
-                className="group flex items-center gap-3 rounded-full px-2 py-1 transition hover:bg-white/5"
+                className="flex items-center gap-3"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-maroon-300/30 bg-maroon-500/20 text-maroon-100 shadow-glow">
-                  <span aria-hidden="true" className="text-lg">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-maroon-600 text-maroon-100">
+                  <span aria-hidden="true" className="text-sm">
                     ★
                   </span>
                 </div>
                 <div>
-                  <p className="font-[var(--font-display)] text-xl font-semibold tracking-wide text-[var(--text)]">
+                  <p className="font-[var(--font-display)] text-lg font-semibold tracking-wide text-[var(--text)]">
                     Hall of Fame
                   </p>
-                  <p className="-mt-1 text-xs uppercase tracking-[0.3em] text-[var(--muted)]">
+                  <p className="-mt-1 text-[10px] uppercase tracking-[0.3em] text-[var(--muted)]">
                     NIT Calicut
                   </p>
                 </div>
@@ -68,7 +68,7 @@ export default function RootLayout({
               <nav className="flex items-center gap-2 text-sm text-[var(--muted)]">
                 <a
                   href="/submit/"
-                  className="rounded-full border border-white/10 px-4 py-2 transition hover:border-maroon-300/40 hover:bg-maroon-500/15 hover:text-[var(--text)]"
+                  className="rounded-lg border border-[var(--border)] px-3 py-1.5 transition hover:border-maroon-500/40 hover:text-[var(--text)]"
                 >
                   Submit Guide
                 </a>
@@ -76,18 +76,18 @@ export default function RootLayout({
                   href="https://github.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className="hidden rounded-full border border-white/10 px-4 py-2 transition hover:border-maroon-300/40 hover:bg-maroon-500/15 hover:text-[var(--text)] sm:inline-flex"
+                  className="hidden rounded-lg border border-[var(--border)] px-3 py-1.5 transition hover:border-maroon-500/40 hover:text-[var(--text)] sm:inline-block"
                 >
                   GitHub
                 </a>
               </nav>
             </div>
           </header>
-          <main className="relative mx-auto w-full max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+          <main className="mx-auto w-full max-w-7xl px-4 pb-16 pt-6 sm:px-6 lg:px-8">
             {children}
           </main>
-          <footer className="border-t border-white/10 bg-black/20">
-            <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-8 text-sm text-[var(--muted)] sm:px-6 lg:px-8">
+          <footer className="border-t border-[var(--border)]">
+            <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-sm text-[var(--muted)] sm:px-6 lg:px-8">
               <p>
                 Built as a static showcase for student projects at NIT Calicut.
               </p>
