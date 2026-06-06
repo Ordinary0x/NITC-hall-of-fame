@@ -19,7 +19,7 @@ export default async function HomePage() {
           <div className="inline-flex items-center gap-2 rounded-lg bg-maroon-600/20 px-3 py-1 text-xs uppercase tracking-[0.3em] text-maroon-200">
             NIT Calicut student showcase
           </div>
-          <h1 className="font-[var(--font-display)] text-4xl font-semibold leading-tight tracking-[-0.03em] text-[var(--text)] sm:text-5xl lg:text-6xl">
+          <h1 className="font-semibold text-4xl leading-tight tracking-[-0.03em] text-[var(--text)] sm:text-5xl lg:text-6xl">
             NITC Hall of Fame
           </h1>
           <p className="text-base leading-7 text-[var(--muted)] sm:text-lg">

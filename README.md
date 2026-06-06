@@ -25,9 +25,11 @@ Add one entry per project in `projects.json`:
 ```json
 [
   {
+    "title": "Project title"
     "project": "https://github.com/your-name/your-repo",
     "author": "https://github.com/your-name",
-    "description": "A short description of the project."
+    "description": "A short description of what the project does."
+    "website": "website link"
   }
 ]
 ```
