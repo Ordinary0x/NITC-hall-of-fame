@@ -33,5 +33,12 @@
     "author": "https://github.com/Mat-hew-24",
     "description": "TypeMonkey is a clone of MonkeyType with minimal UI.",
     "website": "https://typing-test-app-gamma.vercel.app/"
+  },
+  {
+    "title": "ChessArena",
+    "project": "https://github.com/JissJanex/ChessArena.git",
+    "author": "https://github.com/JissJanex",
+    "description": "An interactive React + TypeScript chess app with local PvP and a Stockfish-powered AI opponent.",
+    "website": "https://chess-arena-steel.vercel.app/"
   }
 ]
