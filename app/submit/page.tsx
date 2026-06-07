@@ -96,7 +96,7 @@ export default function SubmitPage() {
           the next build to publish your project.
         </p>
         <a
-          href="https://github.com/your-org/nitc-hall-of-fame"
+          href="https://github.com/simonMat21/NITC-hall-of-fame"
           target="_blank"
           rel="noreferrer"
           className="mt-3 inline-flex rounded-lg border border-maroon-500/30 bg-maroon-600/15 px-3.5 py-2 text-sm font-medium text-[var(--text)] transition hover:border-maroon-500/50"
