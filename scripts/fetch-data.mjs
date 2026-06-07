@@ -184,13 +184,13 @@ function createPlaceholderSvg(label) {
 async function fetchProject(entry, index, token) {
   const submittedTitle = String(entry.title ?? "").trim();
   const repoUrl = String(entry.project ?? "").trim();
-  const authorUrl = String(entry.author ?? "").trim();
+  const authorUrls = entry.authors ?? (entry.author ? [entry.author] : []);
   const website = normalizeWebsiteUrl(entry.website);
   const submissionDescription = String(entry.description ?? "").trim();
   const repository = parseRepositoryUrl(repoUrl);
-  const authorLogin = parseAuthorUrl(authorUrl);
+  const authorLogins = authorUrls.map(parseAuthorUrl).filter(Boolean);
 
-  if (!repository || !authorLogin || !submissionDescription) {
+  if (!repository || authorLogins.length === 0 || !submissionDescription) {
     console.warn(`[fetch-data] Skipping invalid entry at index ${index + 1}`);
     return null;
   }
@@ -340,21 +340,29 @@ async function fetchProject(entry, index, token) {
     );
   }
 
-  // author
-  let authorData = null;
-  try {
-    authorData = await githubGet(`/users/${authorLogin}`, token);
-  } catch (err) {
-    console.warn(
-      `[fetch-data] Failed to fetch author profile for ${authorLogin}: ${err.message}`,
-    );
+  // authors
+  const authors = [];
+  for (const login of authorLogins) {
+    let userData = null;
+    try {
+      userData = await githubGet(`/users/${login}`, token);
+    } catch (err) {
+      console.warn(
+        `[fetch-data] Failed to fetch author profile for ${login}: ${err.message}`,
+      );
+    }
+    const fallbackAvatar = `https://avatars.githubusercontent.com/${login}`;
+    authors.push({
+      login,
+      name: userData?.name || repoData.owner?.login || login,
+      avatarUrl: userData?.avatar_url || fallbackAvatar,
+      profileUrl: userData?.html_url || `https://github.com/${login}`,
+      bio: userData?.bio || null,
+    });
   }
 
   const thumbnail =
     images[0] || createPlaceholderSvg(repoData.name || repository.repo);
-  const fallbackAvatar =
-    repoData.owner?.avatar_url ||
-    `https://avatars.githubusercontent.com/${authorLogin}`;
 
   return {
     repoUrl,
@@ -369,13 +377,7 @@ async function fetchProject(entry, index, token) {
     screenshots: images,
     thumbnail,
     website,
-    author: {
-      login: authorLogin,
-      name: authorData?.name || repoData.owner?.login || authorLogin,
-      avatarUrl: authorData?.avatar_url || fallbackAvatar,
-      profileUrl: authorData?.html_url || authorUrl,
-      bio: authorData?.bio || null,
-    },
+    authors,
     submissionOrder: index + 1,
     readmeMarkdown,
     readmeTitle,

@@ -418,9 +418,9 @@ export default async function ProjectPage({
 
         {/* Sidebar */}
         <aside className="space-y-3">
-          {/* Author */}
-          <SidebarCard title="Author">
-            <AuthorCard author={project.author} />
+          {/* Authors */}
+          <SidebarCard title={project.authors.length === 1 ? "Author" : "Authors"}>
+            <AuthorCard authors={project.authors} />
           </SidebarCard>
 
           {/* Details */}

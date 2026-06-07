@@ -10,7 +10,7 @@ const exampleEntry = `[
   {
     "title": "Project title"
     "project": "https://github.com/your-name/your-repo",
-    "author": "https://github.com/your-name",
+    "authors": ["https://github.com/your-name"],
     "description": "A short description of what the project does."
     "website": "website link"
   }

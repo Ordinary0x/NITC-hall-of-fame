@@ -47,10 +47,7 @@ export default function RootLayout({
         <div className="min-h-screen">
           <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg)]">
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-              <a
-                href="/"
-                className="flex items-center gap-3"
-              >
+              <a href="/" className="flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-maroon-600 text-maroon-100">
                   <span aria-hidden="true" className="text-sm">
                     ★
@@ -73,7 +70,7 @@ export default function RootLayout({
                   Submit Guide
                 </a>
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/simonMat21/NITC-hall-of-fame"
                   target="_blank"
                   rel="noreferrer"
                   className="hidden rounded-lg border border-[var(--border)] px-3 py-1.5 transition hover:border-maroon-500/40 hover:text-[var(--text)] sm:inline-block"

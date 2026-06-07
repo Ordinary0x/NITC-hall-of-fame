@@ -116,20 +116,41 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
         <div className="mt-auto flex items-center gap-2.5 border-t border-[var(--border)] pt-3">
-          <img
-            src={project.author.avatarUrl}
-            alt={`${project.author.name} avatar`}
-            className="h-6 w-6 rounded-full object-cover ring-1 ring-white/10"
-            loading="lazy"
-          />
-          <div className="min-w-0">
-            <p className="truncate text-sm font-medium text-[var(--text)]">
-              {project.author.name}
-            </p>
-            <p className="truncate text-xs text-white/45">
-              @{project.author.login}
-            </p>
-          </div>
+          {project.authors.length === 1 ? (
+            <>
+              <img
+                src={project.authors[0].avatarUrl}
+                alt={`${project.authors[0].name} avatar`}
+                className="h-6 w-6 rounded-full object-cover ring-1 ring-white/10"
+                loading="lazy"
+              />
+              <div className="min-w-0">
+                <p className="truncate text-sm font-medium text-[var(--text)]">
+                  {project.authors[0].name}
+                </p>
+                <p className="truncate text-xs text-white/45">
+                  @{project.authors[0].login}
+                </p>
+              </div>
+            </>
+          ) : (
+            <div className="flex -space-x-2">
+              {project.authors.slice(0, 4).map((author) => (
+                <img
+                  key={author.login}
+                  src={author.avatarUrl}
+                  alt={`${author.name} avatar`}
+                  className="h-6 w-6 rounded-full object-cover ring-2 ring-[var(--bg)]"
+                  loading="lazy"
+                />
+              ))}
+              {project.authors.length > 4 && (
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#222] text-[10px] text-white/50 ring-2 ring-[var(--bg)]">
+                  +{project.authors.length - 4}
+                </span>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </Link>

@@ -11,13 +11,13 @@ export type ProjectRecord = {
   screenshots: string[];
   thumbnail: string;
   website?: string | null;
-  author: {
+  authors: {
     login: string;
     name: string;
     avatarUrl: string;
     profileUrl: string;
     bio: string | null;
-  };
+  }[];
   submissionOrder: number;
   readmeMarkdown?: string;
   readmeTitle?: string;
@@ -78,7 +78,9 @@ export function collectCatalogStats(projects: ProjectRecord[]) {
   return {
     count: projects.length,
     stars: projects.reduce((total, project) => total + (project.stars ?? 0), 0),
-    contributors: new Set(projects.map((project) => project.author.login)).size,
+    contributors: new Set(
+      projects.flatMap((project) => project.authors.map((a) => a.login)),
+    ).size,
   };
 }
 

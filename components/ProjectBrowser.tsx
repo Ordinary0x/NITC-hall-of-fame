@@ -30,8 +30,7 @@ export function ProjectBrowser({ projects }: ProjectBrowserProps) {
       const haystack = [
         project.title,
         project.description,
-        project.author.name,
-        project.author.login,
+        ...project.authors.flatMap((a) => [a.name, a.login]),
         project.repoUrl,
       ]
         .join(" ")

@@ -1,41 +1,5 @@
 [
   {
-    "repoUrl": "https://github.com/simonMat21/petal",
-    "title": "Petal",
-    "description": "A Go tool that renders images directly inside the terminal.",
-    "stars": 2,
-    "forks": 0,
-    "language": "Go",
-    "topics": [
-      "gifs",
-      "go",
-      "image",
-      "jpg",
-      "png",
-      "terminal"
-    ],
-    "license": null,
-    "lastUpdated": "2026-05-23T10:37:22Z",
-    "screenshots": [
-      "https://raw.githubusercontent.com/simonMat21/petal/main/hof/thumbnail.gif",
-      "https://raw.githubusercontent.com/simonMat21/petal/main/hof/example3.png",
-      "https://raw.githubusercontent.com/simonMat21/petal/main/hof/example4.png"
-    ],
-    "thumbnail": "https://raw.githubusercontent.com/simonMat21/petal/main/hof/thumbnail.gif",
-    "website": null,
-    "author": {
-      "login": "simonMat21",
-      "name": "Simon Mattekkatt",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/183115181?v=4",
-      "profileUrl": "https://github.com/simonMat21",
-      "bio": null
-    },
-    "submissionOrder": 1,
-    "readmeMarkdown": "# petal\n\npetal is a Go program that displays images directly in the terminal from either local files or web URLs.\n\nIt supports:\n\n- `png` (also works with transparent png)\n- `jpg` / `jpeg`\n- `gif`\n\nThe image source can be local or remote, so you can point it at a file on disk or an image from the internet.\n\n## How it works\n\nThe terminal renderer splits each text row into 2 rows of pixels using the `▄` character.\nThe top pixel is drawn with the background color, and the bottom pixel is drawn with the foreground color.\n\n## How To Run\n\nRun the program with a local path or a web URL:\n\n```bash\ngo run . <image-path-or-url>\n```\n\nExample:\n\n```bash\ngo run . https://forum.playhive.com/uploads/default/original/3X/9/f/9fbb4321b65bdf33a08df00b50a6e34c3d1e98df.gif\n```\n\nYou can also build the binary first:\n\n```bash\ngo build -o petal.exe\n./petal.exe <image-path-or-url>\n```\n\nIf you want to control the terminal size used for rendering, pass columns and rows. If you do not provide them, petal uses the current terminal size when it can:\n\n```bash\ngo run . <image-path-or-url> <cols> <rows>\n```\n\nExample:\n\n```bash\ngo run . examples/example3.png 80 24\n```\n\n## Supported Inputs\n\n- Local image paths\n- Remote image URLs\n- GIF animation playback\n\n## Notes\n\n- Press `Ctrl+C` to stop a running GIF.\n- If no dimensions are provided, the image is scaled to fit the terminal when possible.\n",
-    "readmeTitle": "petal",
-    "readmeDescription": "petal is a Go program that displays images directly in the terminal from either local files or web URLs."
-  },
-  {
     "repoUrl": "https://github.com/simonMat21/Visual-Learner",
     "title": "Visual Learner",
     "description": "A modern, interactive web application that brings data structures and algorithms to life through stunning visualizations.",
@@ -54,13 +18,15 @@
     ],
     "thumbnail": "https://raw.githubusercontent.com/simonMat21/Visual-Learner/master/hof/thumbnail.png",
     "website": "https://visuallearner.org",
-    "author": {
-      "login": "simonMat21",
-      "name": "Simon Mattekkatt",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/183115181?v=4",
-      "profileUrl": "https://github.com/simonMat21",
-      "bio": null
-    },
+    "authors": [
+      {
+        "login": "simonMat21",
+        "name": "Simon Mattekkatt",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/183115181?v=4",
+        "profileUrl": "https://github.com/simonMat21",
+        "bio": null
+      }
+    ],
     "submissionOrder": 2,
     "readmeMarkdown": "# 🚀 Algorithm Visualizer\n\n**A modern, interactive web application that brings data structures and algorithms to life through stunning visualizations.**\n\nPerfect for students, educators, and developers who want to understand how algorithms work under the hood.\n\n[🌐 **Visit Live Site**](https://visuallearner.org) • [📖 **Documentation**](#-how-to-use) • [🤝 **Contribute**](#-contributing) • [🐛 **Report Bug**](https://github.com/simonMat21/algorithm-visualizer/issues)\n\n---\n\n## ✨ Features\n\n### 🔄 Sorting Algorithms\n\n- **Bubble Sort** - Watch bubbles rise to find their place\n- **Selection Sort** - See the selection process in action\n- **Insertion Sort** - Observe elements finding their sorted position\n- **Merge Sort** - Visualize the divide and conquer approach\n- **Quick Sort** - Experience the power of partitioning\n- **Heap Sort** - Understand heap-based sorting\n- **Count Sort** - See counting sort's linear time magic\n- **Bucket Sort** - Watch elements distributed into buckets\n- **Radix Sort** - Observe digit by digit sorting\n\n### 🔍 Search Algorithms\n\n- **Binary Search** - See the power of divide and conquer\n- **Linear Search** - Watch sequential searching in action\n\n### 🌳 Data Structures\n\n- **Binary Search Tree** - Interactive BST operations\n- **Linked Lists** - Single and double linked list operations\n- **Hash Tables** - Understand hashing and collision resolution\n- **Heaps** - Visualize heap structure and operations\n\n### 🎮 Interactive Features\n\n- **Real-time Animation** - Smooth, customizable animation speeds\n- **Step-by-step Visualization** - Control the pace of learning\n- **Custom Input** - Test with your own data sets\n- **Random Data Generation** - Quick testing with random arrays\n- **Responsive Design** - Works on desktop and mobile devices\n\n## 🛠️ Tech Stack\n\n- **Framework**: Next.js 14 (React)\n- **Styling**: Tailwind CSS\n- **Animations**: Custom animation engine with p5.js\n- **UI Components**: Shadcn/ui\n- **Deployment**: Vercel\n- **Website**: [visuallearner.org](https://visuallearner.org)\n\n## Project Structure\n\n```bash\n.\n├── LICENSE\n├── README.md\n├── app\n│   ├── algorithms\n│   │   ├── bst\n│   │   ├── hash-table\n│   │   ├── heap\n│   │   ├── linked-list\n│   │   ├── search\n│   │   └── sorting\n│   ├── globals.css\n│   ├── layout.js\n│   └── page.js\n├── components\n│   ├── Animator.js\n│   ├── Animator2.js\n│   ├── CodeBlock.js\n│   ├── Footer/\n│   ├── Header/\n│   ├── NumberInput.js\n│   ├── Tideon.js\n│   ├── phoneScreenBlocker.js\n│   └── ui/\n├── components.json\n├── eslint.config.mjs\n├── jsconfig.json\n├── lib/\n├── next.config.mjs\n├── package-lock.json\n├── package.json\n├── postcss.config.mjs\n└── public/\n```\n\n## 🚀 Getting Started\n\n### Prerequisites\n\n- Node.js 18+ installed\n- npm, yarn, pnpm, or bun package manager\n\n### Installation\n\n1. **Clone the repository**\n\n   ```bash\n   git clone https://github.com/simonMat21/algorithm-visualizer.git\n   cd algorithm-visualizer\n   ```\n\n2. **Install dependencies**\n\n   ```bash\n   npm install\n   # or\n   yarn install\n   # or\n   pnpm install\n   ```\n\n3. **Run the development server**\n\n   ```bash\n   npm run dev\n   # or\n   yarn dev\n   # or\n   pnpm dev\n   ```\n\n4. **Open your browser**\n   Navigate to [http://localhost:3000](http://localhost:3000) to see the application.\n\n## 🎯 How to Use\n\n1. **Visit the Website** - Go to [visuallearner.org](https://visuallearner.org)\n2. **Select an Algorithm** - Choose from sorting, searching, or data structure categories\n3. **Input Your Data** - Enter custom numbers or generate random data\n4. **Customize Settings** - Adjust animation speed and visualization preferences\n5. **Watch & Learn** - Observe the algorithm in action with real-time animations\n6. **Experiment** - Try different inputs to see how algorithms behave\n\n## 🤝 Contributing\n\nWe love contributions! Whether you're fixing bugs, adding new algorithms, improving documentation, or enhancing the UI, your help is greatly appreciated.\n\n### Ways to Contribute\n\n- 🐛 **Bug Reports** - Found a bug? Let us know!\n- 💡 **Feature Requests** - Have an idea? We'd love to hear it!\n- 🔧 **Code Contributions** - Submit pull requests for new features or fixes\n- 📚 **Documentation** - Help improve our docs and examples\n- 🎨 **Design** - Enhance the user interface and experience\n\n### Getting Started with Contributing\n\n1. Fork the repository\n2. Create a feature branch (`git checkout -b feature/amazing-feature`)\n3. Make your changes\n4. Test thoroughly\n5. Commit your changes (`git commit -m 'Add some amazing feature'`)\n6. Push to the branch (`git push origin feature/amazing-feature`)\n7. Open a Pull Request\n\n### Development Guidelines\n\n- Follow the existing code style and conventions\n- Add comments for complex algorithms\n- Test your changes across different browsers\n- Update documentation when needed\n- Keep animations smooth and educational\n\n## 📖 Educational Value\n\nThis project is designed to help:\n\n- **Computer Science Students** understand algorithm complexity and behavior\n- **Educators** teach algorithms in an engaging, visual way\n- **Developers** refresh their knowledge of fundamental algorithms\n- **Interview Candidates** practice and visualize common algorithm questions\n\n## 🎨 Customization\n\nThe visualization engine is highly customizable:\n\n- Adjust colors and themes\n- Modify animation speeds\n- Add new visualization styles\n- Extend with new algorithms\n\n## 📱 Browser Support\n\n- Chrome (recommended)\n- Firefox\n- Safari\n- Edge\n\n## 🙏 Acknowledgments\n\n- Built with ❤️ using Next.js and React\n- Animations powered by p5.js\n- UI components from Shadcn/ui\n- Hosted at [visuallearner.org](https://visuallearner.org)\n- Special thanks to all contributors who help make this project better\n\n## 🌐 Links\n\n- **Live Website**: [visuallearner.org](https://visuallearner.org)\n- **GitHub Repository**: [github.com/yourusername/algorithm-visualizer](https://github.com/simonMat21/algorithm-visualizer)\n- **Issues**: [Report bugs or request features](https://github.com/simonMat21/algorithm-visualizer/issues)\n\n## 📞 Support\n\nIf you encounter any issues or have questions:\n\n- Visit [visuallearner.org](https://visuallearner.org) to use the live version\n- Open an issue on GitHub\n- Check existing documentation\n- Join our community discussions\n\n---\n\n<div align=\"center\">\n\n**Made with ❤️ for the developer community. Happy learning! 🎓**\n\n**Experience live at [visuallearner.org](https://visuallearner.org)**\n\n</div>\n",
     "readmeTitle": "🚀 Algorithm Visualizer",
@@ -83,13 +49,15 @@
     ],
     "thumbnail": "https://raw.githubusercontent.com/simonMat21/Tideon.js/master/hof/thumbnail.gif",
     "website": "https://simonmat21.github.io/Tideon.js/",
-    "author": {
-      "login": "simonMat21",
-      "name": "Simon Mattekkatt",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/183115181?v=4",
-      "profileUrl": "https://github.com/simonMat21",
-      "bio": null
-    },
+    "authors": [
+      {
+        "login": "simonMat21",
+        "name": "Simon Mattekkatt",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/183115181?v=4",
+        "profileUrl": "https://github.com/simonMat21",
+        "bio": null
+      }
+    ],
     "submissionOrder": 3,
     "readmeMarkdown": "# Tideon.js\n\n**Tideon.js** is a lightweight, extensible JavaScript animation engine designed for creating smooth and expressive UI and canvas animations with minimal effort. It supports advanced animation features like easing, chained sequences, curve-path motion, and \"from\", \"to\", and \"mix\" transition styles.\n\nExample use of Tideon.js : [example website](https://simonmat21.github.io/Tideon.js/).\n\n> **New!** ✨ Now includes a built-in **Curve Editor** — a visual, draggable canvas tool that lets you define custom animation paths interactively!\n\n---\n\n## 🛠️ Features\n\n- ⚡ Powerful and fast frame-based animation loop\n- 🎛️ Rich easing support (linear, back, bounce, elastic, exponential, etc.)\n- 🔁 Sequences of chained animations\n- 🔄 Looping, delay, and custom per-frame logic\n- 🎯 Supports both absolute (`to`, `from`) and relative (`animate`) transitions\n- 🧹 Integrated curve editor with Catmull-Rom interpolation for smooth path motion\n- 🧼 Works seamlessly with HTML elements via `htmlToObj` wrapper\n\n---\n\n## 📦 Installation\n\nJust include `Animator.js` in your project:\n\n```html\n<script src=\"Animator.js\"></script>\n```\n\nOr import it as a module:\n\n```js\nimport { Animator, htmlToObj, initCurveEditor } from \"./Animator.js\";\n```\n\n---\n\n## 🧠 Animator Class (Core API)\n\n### 🛠️ Constructor\n\n```js\nconst ani = new Animator();\n```\n\nCreates a new animation manager instance.\n\n### ⭮️ `mainLoop(interval = 10)`\n\nStarts the animation engine loop, checking for and running animation stages every `interval` ms.\n\n### ➕ `addStage({ funcName, Args })` or `{ func, Args }`\n\nAdds a new stage (step) in the animation pipeline.\n\n---\n\n## 🔧 Animator Functions\n\n### 🏠 Structure\n\nYou animate objects by building **stages**, and then letting `mainLoop()` run those stages frame by frame.\n\n---\n\n### 🎮 `animate(duration, A)`\n\nPerforms relative property changes (deltas).\n\n```js\nani.animate(50, [\n  {\n    obj: myObj,\n    changes: { x: 100, opacity: -0.3 },\n    parameters: { ease: \"easeOut\" },\n  },\n]);\n```\n\n- `changes` are deltas (not final values)\n- Automatically caches starting values\n- Supports `parameters.ease`\n\n---\n\n### 🌟 `to(duration, A)`\n\nAnimates from current state **to** a target value.\n\n```js\nani.to(60, [{ obj: myObj, changes: { x: 200, y: 100 } }]);\n```\n\n---\n\n### 📽 `from(duration, A)`\n\nStarts from an offset state, animates **back to original**.\n\n```js\nani.from(40, [{ obj: myObj, changes: { x: -50, y: -30 } }]);\n```\n\n---\n\n### 🧪 `mix(duration, A)`\n\nMixes different animation types (`from`, `to`, `animate`) in one call.\n\n```js\nani.mix(80, [\n  { tag: \"from\", obj: myObj, changes: { x: -100, y: -50 } },\n  { tag: \"to\", obj: anotherObj, changes: { x: 300, y: 150 } },\n  { tag: \"animate\", obj: thirdObj, changes: { opacity: 0.5 } },\n]);\n```\n\n---\n\n### ⏳ `delay(duration)`\n\nPauses the sequence for a fixed number of frames.\n\n```js\nani.delay(30); // Wait for 30 frames\n```\n\n---\n\n### 🏃 `animateFunc(duration, func)`\n\nPer-frame callback-based animation.\n\n```js\nani.animateFunc(100, (frame) => {\n  obj.x += 1;\n  obj.y += Math.sin(frame / 10);\n});\n```\n\n---\n\n### 🌍 `standAloneCurve(obj, points, duration, ease)`\n\nMoves an object smoothly along a Catmull-Rom interpolated path.\n\n```js\nani.standAloneCurve(obj, points, 120, \"easeInOutCubic\");\n```\n\n- `points`: An array of `{ x, y }` coordinates\n- `obj`: Must have `x` and `y` properties\n\n---\n\n## 🔍 Curve Editor\n\n### `initCurveEditor()`\n\nAdds a canvas-based curve editor on your screen to **visually define path points** by clicking and dragging.\n\n- ✍ Click to add a point\n- ↔ Drag to move\n- 📍 Double-click to delete\n- ⌨ Press `E` to export the path (prints to console)\n\nGreat for building paths to use with `standAloneCurve()`!\n\n---\n\n## 🏢 htmlToObj\n\nA small utility class that wraps around a DOM element and gives you animation-friendly properties like:\n\n- `x`, `y`, `width`, `height`\n- `rotation`, `scale`, `opacity`, `color`\n\nExample:\n\n```js\nconst box = new htmlToObj(\"boxId\");\nani.standAloneTo(60, [{ obj: box, changes: { x: 200, opacity: 0.5 } }]);\n```\n\n---\n\n## 🔧 Example\n\n```js\nconst a = new Animator();\na.standAloneFrom(40, [{ obj: myObj, changes: { x: -100, opacity: -0.5 } }]);\na.standAloneTo(60, [{ obj: myObj, changes: { x: 200, opacity: 1 } }]);\na.mainLoop();\n```\n\n---\n\n## 🚀 License\n\nMIT License\n\n---\n\n## ✨ Author\n\nCreated with ❤️ by Simon Mattekkatt (JustAGuy.21)\n",
     "readmeTitle": "Tideon.js",
@@ -112,13 +80,15 @@
     ],
     "thumbnail": "https://raw.githubusercontent.com/simonMat21/online-c-compiler/master/hof/thumbnail.png",
     "website": "https://online-c-compiler-pi.vercel.app/",
-    "author": {
-      "login": "simonMat21",
-      "name": "Simon Mattekkatt",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/183115181?v=4",
-      "profileUrl": "https://github.com/simonMat21",
-      "bio": null
-    },
+    "authors": [
+      {
+        "login": "simonMat21",
+        "name": "Simon Mattekkatt",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/183115181?v=4",
+        "profileUrl": "https://github.com/simonMat21",
+        "bio": null
+      }
+    ],
     "submissionOrder": 4,
     "readmeMarkdown": "# PI Online C Compiler\n\nThis is a website the helps your compile c code in the browser itself.\nThe main feature is that you can run multiple test cases at the same time!!!\n\nYou can also give expected output and compare the result that you got!!\n\n**Get started at [online-c-compiler-pi.vercel.app](https://online-c-compiler-pi.vercel.app/)**.\n\nPlease give it a try, [file issues](https://github.com/simonMat21/online-c-compiler/issues). Thank you!\n\n---\n\n### Usage\n\nIt is simple as it can get, write your code in the editor and the inputs and expected outputs towards the write of it and then hit Run Code.\nIt may take a while in the start as the compiler api could be having a cold start.\n",
     "readmeTitle": "PI Online C Compiler",
@@ -140,13 +110,22 @@
     ],
     "thumbnail": "https://raw.githubusercontent.com/Mat-hew-24/typing-test-app/main/hof/thumbnail.png",
     "website": "https://typing-test-app-gamma.vercel.app/",
-    "author": {
-      "login": "Mat-hew-24",
-      "name": "Abhinav Mathew",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/212924785?v=4",
-      "profileUrl": "https://github.com/Mat-hew-24",
-      "bio": "Always Learning🌱\r\n"
-    },
+    "authors": [
+      {
+        "login": "Mat-hew-24",
+        "name": "Abhinav Mathew",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/212924785?v=4",
+        "profileUrl": "https://github.com/Mat-hew-24",
+        "bio": "Always Learning🌱\r\n"
+      },
+      {
+        "login": "simonMat21",
+        "name": "Simon Mattekkatt",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/183115181?v=4",
+        "profileUrl": "https://github.com/simonMat21",
+        "bio": null
+      }
+    ],
     "submissionOrder": 5,
     "readmeMarkdown": "# TypeMonkey - Advanced Typing Test Application\n\nA modern, feature-rich typing test application built with Next.js, TypeScript, and React. TypeMonkey provides a comprehensive typing experience with real-time analytics, customizable themes, and advanced performance tracking.\nI mean at the end of the day it is a monkeytype clone, just made from scratch...\n\n## Features\n\n### Core Typing Experience\n\n- **Real-time typing test** with dynamic word generation\n- **Custom cursor tracking** that follows your typing position\n- **Smart auto-scrolling** for seamless typing experience\n- **Mouse interference protection** - prevents focus loss while actively typing\n- **Visual typing mode indicator** with colored border when protection is active\n- **Word-by-word timing** for detailed performance analysis\n\n### Advanced Analytics\n\n- **Words Per Minute (WPM)** calculation in real-time\n- **Raw typing speed** measurement\n- **Typing accuracy** percentage tracking\n- **Consistency scoring** using statistical analysis\n- **Interactive performance charts** with Chart.js integration\n- **Mistake tracking** with visual error indicators\n- **Kalman filtering** for smooth data visualization\n\n### Timer & Modes\n\n- **Customizable timer modes**: 15s, 30s, 60s, 120s, and more\n- **Real-time countdown** display\n- **Automatic test completion** when timer expires\n- **Performance snapshots** captured every second during typing\n\n### User Interface\n\n- **Dark/Light theme** support with system preference detection\n- **Responsive design** for all screen sizes\n- **Modern glassmorphism** UI elements\n- **Smooth animations** and transitions\n- **Loading states** with custom spinners\n- **Clean typography** with Geist mono font\n\n### Results & Statistics\n\n- **Comprehensive results page** with detailed metrics\n- **Statistical analysis** including standard deviation\n- **Performance consistency** measurements\n- **Historical data** visualization with interactive charts\n- **Export capabilities** for performance data\n\n## Technology Stack\n\n- **Frontend Framework**: Next.js 15.3.5 with React 19\n- **Language**: TypeScript for type safety\n- **Styling**: Tailwind CSS + CSS Modules\n- **Charts**: Chart.js for interactive data visualization\n- **Icons**: React Icons library\n- **Development**: ESLint for code quality\n- **Build Tool**: Turbopack for fast development\n\n## Getting Started\n\n### Prerequisites\n\n- Node.js 18.0 or higher\n- npm, yarn, pnpm, or bun package manager\n\n### Installation\n\n1. **Clone the repository**\n\n   ```bash\n   git clone <repository-url>\n   cd typing-test-app\n   ```\n\n2. **Install dependencies**\n\n   ```bash\n   npm install\n   # or\n   yarn install\n   # or\n   pnpm install\n   # or\n   bun install\n   ```\n\n3. **Run the development server**\n\n   ```bash\n   npm run dev\n   # or\n   yarn dev\n   # or\n   pnpm dev\n   # or\n   bun dev\n   ```\n\n4. **Open your browser**\n\n   Navigate to [http://localhost:3000](http://localhost:3000) to start typing!\n\n## How to Use\n\n### Starting a Test\n\n1. **Choose your timer** - Select from 15s, 30s, 60s, or custom durations\n2. **Begin typing** - Click in the text area or start typing immediately\n3. **Stay focused** - The app prevents mouse interference while you're typing\n4. **Complete the test** - Finish before time runs out or complete all words\n\n### Understanding Your Results\n\n- **WPM**: Your typing speed in words per minute\n- **Raw Speed**: Unfiltered typing speed including mistakes\n- **Accuracy**: Percentage of correctly typed characters\n- **Consistency**: How stable your typing speed was throughout the test\n- **Chart Analysis**: Visual representation of your performance over time\n\n### Customization\n\n- **Theme Toggle**: Switch between light and dark modes\n- **Timer Settings**: Adjust test duration to your preference\n- **Reset/Restart**: Start a new test anytime with fresh words\n\n## Features in Detail\n\n### Smart Typing Protection\n\nTypeMonkey includes an innovative focus protection system:\n\n- **Automatic focus retention** when actively typing\n- **Mouse event blocking** outside the typing area\n- **Visual indicators** when protection is active\n- **Seamless transition** back to normal mode when you stop typing\n\n### Advanced Analytics Engine\n\nThe application uses sophisticated algorithms for accurate measurements:\n\n- **Kalman filtering** for smooth real-time data\n- **Statistical analysis** for consistency scoring\n- **Performance trending** throughout the typing session\n- **Mistake pattern recognition** and visualization\n\n### Performance Optimization\n\n- **Memoized components** for efficient rendering\n- **Smooth cursor animation** with requestAnimationFrame\n- **Efficient event handling** with proper cleanup\n- **Optimized re-renders** for real-time updates\n\n## Themes\n\nTypeMonkey supports both light and dark themes with:\n\n- **System preference detection**\n- **Manual theme switching**\n- **Consistent color variables** throughout the app\n- **Smooth theme transitions**\n\n## Data Processing\n\nThe app processes typing data in real-time:\n\n- **Character-level accuracy** tracking\n- **Word completion timing**\n- **Mistake categorization**\n- **Speed fluctuation analysis**\n- **Consistency measurements** using standard deviation\n\n## Development\n\n### Project Structure\n\n```text\napp/\n├── components/          # React components\n│   ├── typingBox.tsx   # Main typing interface\n│   ├── timer.tsx       # Timer functionality\n│   ├── chart.tsx       # Performance charts\n│   ├── results.tsx     # Results display\n│   ├── navbar.tsx      # Navigation\n│   └── ...            # Other components\n├── lib/                # Utility functions\n├── globals.css         # Global styles\n└── page.tsx           # Main page component\n```\n\n### Key Components\n\n- **TypingBox**: Core typing interface with real-time processing\n- **Timer**: Countdown timer with performance snapshots\n- **Chart**: Interactive performance visualization\n- **Results**: Comprehensive statistics display\n- **Bar**: Settings and mode selection\n\n",
     "readmeTitle": "TypeMonkey - Advanced Typing Test Application",
@@ -161,17 +140,23 @@
     "language": "TypeScript",
     "topics": [],
     "license": "MIT",
-    "lastUpdated": "2026-01-12T13:06:21Z",
-    "screenshots": [],
-    "thumbnail": "data:image/svg+xml;charset=utf-8,%0A%20%20%20%20%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20675%22%3E%0A%20%20%20%20%20%20%3Cdefs%3E%0A%20%20%20%20%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20x2%3D%221%22%20y1%3D%220%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%230d0d0d%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%231a1a1a%22%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%20%20%3C%2Fdefs%3E%0A%0A%20%20%20%20%20%20%3C!--%20Background%20--%3E%0A%20%20%20%20%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20fill%3D%22url(%23g)%22%2F%3E%0A%0A%20%20%20%20%20%20%3C!--%20Subtle%20accent%20circles%20--%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%221100%22%20cy%3D%2280%22%20r%3D%22180%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%22.025%22%2F%3E%0A%20%20%20%20%20%20%3Ccircle%20cx%3D%22100%22%20cy%3D%22600%22%20r%3D%22220%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%22.018%22%2F%3E%0A%0A%20%20%20%20%20%20%3C!--%20Horizontal%20rule%20--%3E%0A%20%20%20%20%20%20%3Cline%20x1%3D%2280%22%20y1%3D%22337%22%20x2%3D%221120%22%20y2%3D%22337%22%20stroke%3D%22%23ffffff%22%20stroke-opacity%3D%22.07%22%20stroke-width%3D%221%22%2F%3E%0A%0A%20%20%20%20%20%20%3C!--%20GitHub%20logo%20(left)%20--%3E%0A%20%20%20%20%20%20%3Cg%20transform%3D%22translate(80%2C%20290)%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%0A%20%20%20%20%20%20%20%20%20%20d%3D%22M8%200C3.58%200%200%203.58%200%208c0%203.54%202.29%206.53%205.47%207.59.4.07.55-.17.55-.38%200-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01%201.08.58%201.23.82.72%201.21%201.87.87%202.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95%200-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12%200%200%20.67-.21%202.2.82.64-.18%201.32-.27%202-.27s1.36.09%202%20.27c1.53-1.04%202.2-.82%202.2-.82.44%201.1.16%201.92.08%202.12.51.56.82%201.27.82%202.15%200%203.07-1.87%203.75-3.65%203.95.29.25.54.73.54%201.48%200%201.07-.01%201.93-.01%202.2%200%20.21.15.46.55.38A8.01%208.01%200%200%200%2016%208c0-4.42-3.58-8-8-8%22%0A%20%20%20%20%20%20%20%20%20%20fill%3D%22%23ffffff%22%0A%20%20%20%20%20%20%20%20%20%20fill-opacity%3D%22.55%22%0A%20%20%20%20%20%20%20%20%20%20transform%3D%22scale(2.2)%22%0A%20%20%20%20%20%20%20%20%2F%3E%0A%20%20%20%20%20%20%3C%2Fg%3E%0A%0A%20%20%20%20%20%20%3C!--%20Project%20name%20(right-aligned)%20--%3E%0A%20%20%20%20%20%20%3Ctext%0A%20%20%20%20%20%20%20%20x%3D%221120%22%0A%20%20%20%20%20%20%20%20y%3D%22348%22%0A%20%20%20%20%20%20%20%20text-anchor%3D%22end%22%0A%20%20%20%20%20%20%20%20fill%3D%22%23ffffff%22%0A%20%20%20%20%20%20%20%20fill-opacity%3D%22.9%22%0A%20%20%20%20%20%20%20%20font-family%3D%22ui-monospace%2C%20Menlo%2C%20monospace%22%0A%20%20%20%20%20%20%20%20font-size%3D%2252%22%0A%20%20%20%20%20%20%20%20font-weight%3D%22700%22%0A%20%20%20%20%20%20%20%20letter-spacing%3D%22-1%22%0A%20%20%20%20%20%20%3EChessArena%3C%2Ftext%3E%0A%20%20%20%20%3C%2Fsvg%3E%0A%20%20",
+    "lastUpdated": "2026-06-07T09:17:01Z",
+    "screenshots": [
+      "https://raw.githubusercontent.com/JissJanex/ChessArena/main/hof/thumbnail.png",
+      "https://raw.githubusercontent.com/JissJanex/ChessArena/main/hof/img2.png",
+      "https://raw.githubusercontent.com/JissJanex/ChessArena/main/hof/img3.png"
+    ],
+    "thumbnail": "https://raw.githubusercontent.com/JissJanex/ChessArena/main/hof/thumbnail.png",
     "website": "https://chess-arena-steel.vercel.app/",
-    "author": {
-      "login": "JissJanex",
-      "name": "JissJanex",
-      "avatarUrl": "https://avatars.githubusercontent.com/u/171758479?v=4",
-      "profileUrl": "https://github.com/JissJanex",
-      "bio": null
-    },
+    "authors": [
+      {
+        "login": "JissJanex",
+        "name": "JissJanex",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/171758479?v=4",
+        "profileUrl": "https://github.com/JissJanex",
+        "bio": null
+      }
+    ],
     "submissionOrder": 6,
     "readmeMarkdown": "# ♟️ Chess Game\n\nA modern, interactive chess game built with React, TypeScript, and Vite. Play chess locally with a friend in an elegant wooden-themed interface.\n\n🎮 **[Play Now](https://chess-arena-steel.vercel.app/)**\n\n## 🎮 Features\n\n- **Player vs Player**: Play chess against a friend on the same device\n- **Player vs Computer**: Challenge the Stockfish 17 chess engine\n- **Move Validation**: Only legal moves allowed with visual highlighting\n- **Captured Pieces**: Track pieces captured by each side\n- **Game Detection**: Automatic check, checkmate, stalemate, and draw detection\n\n## 🚀 Getting Started\n\n### Installation\n\n1. **Install dependencies**\n   ```bash\n   npm install\n   ```\n\n2. **Copy Stockfish engine files**\n   ```bash\n   cp -r node_modules/stockfish/src public/stockfish\n   ```\n\n3. **Start the development server**\n   ```bash\n   npm run dev\n   ```\n\n4. **Open your browser** - Navigate to `http://localhost:5173`\n\n## 🎯 How to Play\n\n### Player vs Player\n1. Click **\"Player vs Player\"** from the home page\n2. **Click a piece** to select it and see legal moves highlighted\n3. **Click a highlighted square** to move\n4. **Click the same piece** to deselect\n5. Use **Restart** button in header to start a new game\n\n### Player vs Computer\n1. Click **\"Player vs Computer\"** from the home page\n2. You play as **White** and move first\n3. The **Computer** plays as Black and responds automatically\n4. The computer thinks for about 1 second before making each move\n5. Use **Restart** button to start a new game against the computer\n\n## 🛠️ Technology Stack\n\n- React + TypeScript + Vite\n- react-chessboard & chess.js\n- react-router-dom\n- Stockfish 17 (chess engine for computer opponent)\n\n## 📝 License\n\nSee the LICENSE file for details.\n\n---\n\n**Enjoy your game! ♟️**\n",
     "readmeTitle": "♟️ Chess Game",
