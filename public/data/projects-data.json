@@ -1,5 +1,43 @@
 [
   {
+    "repoUrl": "https://github.com/simonMat21/petal",
+    "title": "Petal",
+    "description": "A Go tool that renders images directly inside the terminal.",
+    "stars": 2,
+    "forks": 0,
+    "language": "Go",
+    "topics": [
+      "gifs",
+      "go",
+      "image",
+      "jpg",
+      "png",
+      "terminal"
+    ],
+    "license": null,
+    "lastUpdated": "2026-05-23T10:37:22Z",
+    "screenshots": [
+      "https://raw.githubusercontent.com/simonMat21/petal/main/hof/thumbnail.gif",
+      "https://raw.githubusercontent.com/simonMat21/petal/main/hof/example3.png",
+      "https://raw.githubusercontent.com/simonMat21/petal/main/hof/example4.png"
+    ],
+    "thumbnail": "https://raw.githubusercontent.com/simonMat21/petal/main/hof/thumbnail.gif",
+    "website": null,
+    "authors": [
+      {
+        "login": "simonMat21",
+        "name": "Simon Mattekkatt",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/183115181?v=4",
+        "profileUrl": "https://github.com/simonMat21",
+        "bio": null
+      }
+    ],
+    "submissionOrder": 1,
+    "readmeMarkdown": "# petal\n\npetal is a Go program that displays images directly in the terminal from either local files or web URLs.\n\nIt supports:\n\n- `png` (also works with transparent png)\n- `jpg` / `jpeg`\n- `gif`\n\nThe image source can be local or remote, so you can point it at a file on disk or an image from the internet.\n\n## How it works\n\nThe terminal renderer splits each text row into 2 rows of pixels using the `▄` character.\nThe top pixel is drawn with the background color, and the bottom pixel is drawn with the foreground color.\n\n## How To Run\n\nRun the program with a local path or a web URL:\n\n```bash\ngo run . <image-path-or-url>\n```\n\nExample:\n\n```bash\ngo run . https://forum.playhive.com/uploads/default/original/3X/9/f/9fbb4321b65bdf33a08df00b50a6e34c3d1e98df.gif\n```\n\nYou can also build the binary first:\n\n```bash\ngo build -o petal.exe\n./petal.exe <image-path-or-url>\n```\n\nIf you want to control the terminal size used for rendering, pass columns and rows. If you do not provide them, petal uses the current terminal size when it can:\n\n```bash\ngo run . <image-path-or-url> <cols> <rows>\n```\n\nExample:\n\n```bash\ngo run . examples/example3.png 80 24\n```\n\n## Supported Inputs\n\n- Local image paths\n- Remote image URLs\n- GIF animation playback\n\n## Notes\n\n- Press `Ctrl+C` to stop a running GIF.\n- If no dimensions are provided, the image is scaled to fit the terminal when possible.\n",
+    "readmeTitle": "petal",
+    "readmeDescription": "petal is a Go program that displays images directly in the terminal from either local files or web URLs."
+  },
+  {
     "repoUrl": "https://github.com/simonMat21/Visual-Learner",
     "title": "Visual Learner",
     "description": "A modern, interactive web application that brings data structures and algorithms to life through stunning visualizations.",
