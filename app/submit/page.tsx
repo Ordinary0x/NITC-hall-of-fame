@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 
 const exampleEntry = `[
   {
-    "title": "Project title"
+    "title": "My Cool Project",
     "project": "https://github.com/your-name/your-repo",
     "authors": ["https://github.com/your-name"],
-    "description": "A short description of what the project does."
-    "website": "website link"
+    "description": "A short description of what the project does.",
+    "website": "https://myproject.example.com"
   }
 ]`;
 
@@ -36,7 +36,7 @@ export default function SubmitPage() {
       <section className="grid gap-3">
         {[
           [
-            "Create a hof/ folder in your repository with a thumbnail.* image, a README.md file explaining the project, and any other images to display.",
+            "Create a public/projects/<your-project-name>/ folder inside the Hall of Fame repo. Add a readme.md (optional), thumbnail.* image, and any screenshots.",
             true,
           ],
           ["Fork the Hall of Fame repository and branch from main.", false],
@@ -57,14 +57,23 @@ export default function SubmitPage() {
               <div className="pt-0.5 text-sm leading-6 text-[var(--muted)]">
                 {step as string}
                 {hasSampleButton && (
-                  <a
-                    href="https://github.com/simonMat21/Tideon.js"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-3 inline-flex rounded-lg border border-maroon-500/30 bg-maroon-600/15 px-3.5 py-2 text-sm font-medium text-[var(--text)] transition hover:border-maroon-500/50"
-                  >
-                    Sample Repo
-                  </a>
+                  <>
+                    <p className="mt-3 text-xs leading-5 text-maroon-300/60">
+                      Folder name should match your project title in lowercase
+                      with hyphens for spaces. For example, &quot;Visual
+                      Learner&quot; → <code className="text-maroon-200/80">visual-learner</code>.
+                      Don&apos;t have assets? No problem — we&apos;ll
+                      auto-pull them from your GitHub repo.
+                    </p>
+                    <a
+                      href="https://github.com/simonMat21/NITC-hall-of-fame/tree/main/public/projects"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 inline-flex rounded-lg border border-maroon-500/30 bg-maroon-600/15 px-3.5 py-2 text-sm font-medium text-[var(--text)] transition hover:border-maroon-500/50"
+                    >
+                      View example assets
+                    </a>
+                  </>
                 )}
               </div>
             </div>

@@ -181,6 +181,23 @@ function createPlaceholderSvg(label) {
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .replace(/-+/g, "-");
+}
+
+async function dirExists(dir) {
+  try {
+    await fs.access(dir);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function fetchProject(entry, index, token) {
   const submittedTitle = String(entry.title ?? "").trim();
   const repoUrl = String(entry.project ?? "").trim();
@@ -218,127 +235,179 @@ async function fetchProject(entry, index, token) {
   const defaultBranch = repoData.default_branch || "main";
   const fallbackDescription = repoData.description || "";
 
-  // README
+  // Local assets directory (public/projects/<slug>/)
+  const projectSlug = slugify(submittedTitle || repoData.name || repository.repo);
+  const localAssetsDir = path.join(ROOT, "public", "projects", projectSlug);
+  const hasLocalAssets = await dirExists(localAssetsDir);
+
+  // README: check local readme.md first, then fall back to GitHub API
   let readmeMarkdown = "";
   let readmeTitle = repoData.name || repository.repo;
   let readmeDescription = fallbackDescription;
 
-  try {
-    const hofContents = await githubGet(
-      `/repos/${repository.owner}/${repository.repo}/contents/hof`,
-      token,
-    );
-
-    if (hofContents) {
-      readmeMarkdown =
-        (await githubGetFileContent(
-          repository.owner,
-          repository.repo,
-          "hof/readme.md",
-          token,
-        )) ||
-        (await githubGetFileContent(
-          repository.owner,
-          repository.repo,
-          "hof/README.md",
-          token,
-        ));
+  if (hasLocalAssets) {
+    try {
+      readmeMarkdown = await fs.readFile(
+        path.join(localAssetsDir, "readme.md"),
+        "utf8",
+      );
+    } catch {
+      // local readme.md not found, fall through to GitHub API
     }
+  }
 
-    if (!readmeMarkdown) {
-      const readme = await githubGet(
-        `/repos/${repository.owner}/${repository.repo}/readme`,
+  if (!readmeMarkdown) {
+    try {
+      const hofContents = await githubGet(
+        `/repos/${repository.owner}/${repository.repo}/contents/hof`,
         token,
       );
 
-      if (readme?.content) {
-        readmeMarkdown = Buffer.from(
-          readme.content,
-          readme.encoding || "base64",
-        ).toString("utf8");
+      if (hofContents) {
+        readmeMarkdown =
+          (await githubGetFileContent(
+            repository.owner,
+            repository.repo,
+            "hof/readme.md",
+            token,
+          )) ||
+          (await githubGetFileContent(
+            repository.owner,
+            repository.repo,
+            "hof/README.md",
+            token,
+          ));
       }
-    }
 
-    if (readmeMarkdown) {
-      const metadata = extractReadmeMetadata(
-        readmeMarkdown,
-        repoData.name || repository.repo,
-        fallbackDescription,
-      );
-      readmeTitle = metadata.title;
-      readmeDescription = metadata.description;
-    } else {
+      if (!readmeMarkdown) {
+        const readme = await githubGet(
+          `/repos/${repository.owner}/${repository.repo}/readme`,
+          token,
+        );
+
+        if (readme?.content) {
+          readmeMarkdown = Buffer.from(
+            readme.content,
+            readme.encoding || "base64",
+          ).toString("utf8");
+        }
+      }
+    } catch (err) {
       console.warn(
-        `[fetch-data] README missing for ${repository.owner}/${repository.repo}`,
+        `[fetch-data] Failed to fetch README for ${repository.owner}/${repository.repo}: ${err.message}`,
       );
     }
-  } catch (err) {
+  }
+
+  if (readmeMarkdown) {
+    const metadata = extractReadmeMetadata(
+      readmeMarkdown,
+      repoData.name || repository.repo,
+      fallbackDescription,
+    );
+    readmeTitle = metadata.title;
+    readmeDescription = metadata.description;
+  } else {
     console.warn(
-      `[fetch-data] Failed to fetch README for ${repository.owner}/${repository.repo}: ${err.message}`,
+      `[fetch-data] README missing for ${repository.owner}/${repository.repo}`,
     );
   }
 
-  // images: read from hof/ first, then fall back to root-level images/
+  // images: check local public/projects/<slug>/ first,
+  // then fall back to hof/ in the user's repo, then images/
   let images = [];
-  try {
-    const collectImages = (contents, basePath) => {
-      if (!Array.isArray(contents)) return [];
 
-      const thumbnailFiles = contents
+  if (hasLocalAssets) {
+    try {
+      const entries = await fs.readdir(localAssetsDir, { withFileTypes: true });
+      const files = entries
         .filter(
-          (item) =>
-            item?.type === "file" &&
-            item.name.startsWith("thumbnail.") &&
-            IMAGE_EXTENSIONS.has(path.extname(item.name).toLowerCase()),
+          (e) =>
+            e.isFile() &&
+            IMAGE_EXTENSIONS.has(path.extname(e.name).toLowerCase()),
         )
-        .sort((a, b) => a.name.localeCompare(b.name));
+        .map((e) => e.name)
+        .sort((a, b) => a.localeCompare(b));
 
-      const otherImageFiles = contents
-        .filter(
-          (item) =>
-            item?.type === "file" &&
-            item.name !== "readme.md" &&
-            item.name !== "README.md" &&
-            !item.name.startsWith("thumbnail.") &&
-            IMAGE_EXTENSIONS.has(path.extname(item.name).toLowerCase()),
-        )
-        .sort((a, b) => a.name.localeCompare(b.name));
+      const thumbnailFiles = files.filter((f) => f.startsWith("thumbnail."));
+      const otherImageFiles = files.filter(
+        (f) =>
+          !f.startsWith("thumbnail.") &&
+          f !== "readme.md" &&
+          f !== "README.md",
+      );
 
-      return [...thumbnailFiles, ...otherImageFiles].map((file) => {
-        const filePath = basePath ? `${basePath}/${file.name}` : file.path;
-        return rawUrl(
-          repository.owner,
-          repository.repo,
-          defaultBranch,
-          filePath,
-        );
-      });
-    };
+      images = [...thumbnailFiles, ...otherImageFiles].map(
+        (f) => `/projects/${projectSlug}/${f}`,
+      );
+    } catch (err) {
+      console.warn(
+        `[fetch-data] Failed to list local images for ${repository.owner}/${repository.repo}: ${err.message}`,
+      );
+    }
+  }
 
-    const hofContentsForImages = await githubGet(
-      `/repos/${repository.owner}/${repository.repo}/contents/hof`,
-      token,
-    );
+  if (images.length === 0) {
+    try {
+      const collectImages = (contents, basePath) => {
+        if (!Array.isArray(contents)) return [];
 
-    images = collectImages(hofContentsForImages, "hof");
+        const thumbnailFiles = contents
+          .filter(
+            (item) =>
+              item?.type === "file" &&
+              item.name.startsWith("thumbnail.") &&
+              IMAGE_EXTENSIONS.has(path.extname(item.name).toLowerCase()),
+          )
+          .sort((a, b) => a.name.localeCompare(b.name));
 
-    if (images.length === 0) {
-      const legacyContents = await githubGet(
-        `/repos/${repository.owner}/${repository.repo}/contents/images`,
+        const otherImageFiles = contents
+          .filter(
+            (item) =>
+              item?.type === "file" &&
+              item.name !== "readme.md" &&
+              item.name !== "README.md" &&
+              !item.name.startsWith("thumbnail.") &&
+              IMAGE_EXTENSIONS.has(path.extname(item.name).toLowerCase()),
+          )
+          .sort((a, b) => a.name.localeCompare(b.name));
+
+        return [...thumbnailFiles, ...otherImageFiles].map((file) => {
+          const filePath = basePath ? `${basePath}/${file.name}` : file.path;
+          return rawUrl(
+            repository.owner,
+            repository.repo,
+            defaultBranch,
+            filePath,
+          );
+        });
+      };
+
+      const hofContentsForImages = await githubGet(
+        `/repos/${repository.owner}/${repository.repo}/contents/hof`,
         token,
       );
-      images = collectImages(legacyContents, "images");
-    }
 
-    if (images.length === 0)
+      images = collectImages(hofContentsForImages, "hof");
+
+      if (images.length === 0) {
+        const legacyContents = await githubGet(
+          `/repos/${repository.owner}/${repository.repo}/contents/images`,
+          token,
+        );
+        images = collectImages(legacyContents, "images");
+      }
+    } catch (err) {
       console.warn(
-        `[fetch-data] No images found in hof/ or images/ for ${repository.owner}/${repository.repo}`,
+        `[fetch-data] Failed to list images for ${repository.owner}/${repository.repo}: ${err.message}`,
       );
-  } catch (err) {
-    console.warn(
-      `[fetch-data] Failed to list images for ${repository.owner}/${repository.repo}: ${err.message}`,
-    );
+    }
   }
+
+  if (images.length === 0)
+    console.warn(
+      `[fetch-data] No images found for ${repository.owner}/${repository.repo}`,
+    );
 
   // authors
   const authors = [];

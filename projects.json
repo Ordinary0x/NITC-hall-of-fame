@@ -28,16 +28,6 @@
     "website": "https://online-c-compiler-pi.vercel.app/"
   },
   {
-    "title": "TypeMonkey",
-    "project": "https://github.com/Mat-hew-24/typing-test-app",
-    "authors": [
-      "https://github.com/Mat-hew-24",
-      "https://github.com/simonMat21"
-    ],
-    "description": "TypeMonkey is a clone of MonkeyType with minimal UI.",
-    "website": "https://typing-test-app-gamma.vercel.app/"
-  },
-  {
     "title": "ChessArena",
     "project": "https://github.com/JissJanex/ChessArena.git",
     "authors": ["https://github.com/JissJanex"],
