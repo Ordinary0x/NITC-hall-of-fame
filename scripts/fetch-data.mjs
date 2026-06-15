@@ -236,7 +236,9 @@ async function fetchProject(entry, index, token) {
   const fallbackDescription = repoData.description || "";
 
   // Local assets directory (public/projects/<slug>/)
-  const projectSlug = slugify(submittedTitle || repoData.name || repository.repo);
+  const projectSlug = slugify(
+    submittedTitle || repoData.name || repository.repo,
+  );
   const localAssetsDir = path.join(ROOT, "public", "projects", projectSlug);
   const hasLocalAssets = await dirExists(localAssetsDir);
 
@@ -332,9 +334,7 @@ async function fetchProject(entry, index, token) {
       const thumbnailFiles = files.filter((f) => f.startsWith("thumbnail."));
       const otherImageFiles = files.filter(
         (f) =>
-          !f.startsWith("thumbnail.") &&
-          f !== "readme.md" &&
-          f !== "README.md",
+          !f.startsWith("thumbnail.") && f !== "readme.md" && f !== "README.md",
       );
 
       images = [...thumbnailFiles, ...otherImageFiles].map(
