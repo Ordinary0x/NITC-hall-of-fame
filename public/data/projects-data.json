@@ -158,9 +158,98 @@
         "bio": null
       }
     ],
-    "submissionOrder": 6,
+    "submissionOrder": 5,
     "readmeMarkdown": "# ♟️ Chess Game\n\nA modern, interactive chess game built with React, TypeScript, and Vite. Play chess locally with a friend in an elegant wooden-themed interface.\n\n🎮 **[Play Now](https://chess-arena-steel.vercel.app/)**\n\n## 🎮 Features\n\n- **Player vs Player**: Play chess against a friend on the same device\n- **Player vs Computer**: Challenge the Stockfish 17 chess engine\n- **Move Validation**: Only legal moves allowed with visual highlighting\n- **Captured Pieces**: Track pieces captured by each side\n- **Game Detection**: Automatic check, checkmate, stalemate, and draw detection\n\n## 🚀 Getting Started\n\n### Installation\n\n1. **Install dependencies**\n   ```bash\n   npm install\n   ```\n\n2. **Copy Stockfish engine files**\n   ```bash\n   cp -r node_modules/stockfish/src public/stockfish\n   ```\n\n3. **Start the development server**\n   ```bash\n   npm run dev\n   ```\n\n4. **Open your browser** - Navigate to `http://localhost:5173`\n\n## 🎯 How to Play\n\n### Player vs Player\n1. Click **\"Player vs Player\"** from the home page\n2. **Click a piece** to select it and see legal moves highlighted\n3. **Click a highlighted square** to move\n4. **Click the same piece** to deselect\n5. Use **Restart** button in header to start a new game\n\n### Player vs Computer\n1. Click **\"Player vs Computer\"** from the home page\n2. You play as **White** and move first\n3. The **Computer** plays as Black and responds automatically\n4. The computer thinks for about 1 second before making each move\n5. Use **Restart** button to start a new game against the computer\n\n## 🛠️ Technology Stack\n\n- React + TypeScript + Vite\n- react-chessboard & chess.js\n- react-router-dom\n- Stockfish 17 (chess engine for computer opponent)\n\n## 📝 License\n\nSee the LICENSE file for details.\n\n---\n\n**Enjoy your game! ♟️**\n",
     "readmeTitle": "♟️ Chess Game",
     "readmeDescription": "A modern, interactive chess game built with React, TypeScript, and Vite. Play chess locally with a friend in an elegant woodenthemed interface."
+  },
+  {
+    "repoUrl": "https://github.com/ChillzonToast/Robert-mail",
+    "title": "Robert Mail",
+    "description": "AI email client that has memory of what your interests are.",
+    "stars": 0,
+    "forks": 0,
+    "language": "Python",
+    "topics": [],
+    "license": "MIT",
+    "lastUpdated": "2026-05-21T07:23:53Z",
+    "screenshots": [
+      "/projects/robert-mail/thumbnail.jpg",
+      "/projects/robert-mail/screenshot2.jpg"
+    ],
+    "thumbnail": "/projects/robert-mail/thumbnail.jpg",
+    "website": null,
+    "authors": [
+      {
+        "login": "ChillzonToast",
+        "name": "Ibinu Jaleel",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/117560284?v=4",
+        "profileUrl": "https://github.com/ChillzonToast",
+        "bio": "i am ibinu"
+      }
+    ],
+    "submissionOrder": 6,
+    "readmeMarkdown": "# Robert Mail AI\r\n\r\n**Robert** is a personal AI email assistant that runs locally on your machine. It connects to your Gmail via the official API, reads your unread emails, and uses a local LLM to summarize them, categorize them, and even \"skip\" unimportant ones for you.\r\n\r\n## Features ✨\r\n\r\n-   **Zero-Inbox Focus**: Shows you one email at a time to help you process your inbox efficiently.\r\n-   **AI Summaries**: Instantly get a one-sentence summary of long emails.\r\n-   **Smart Skipping**: Robert learns your preferences (rules) and automatically marks unimportant emails (like newsletters or promotions) as read.\r\n-   **Activity Log**: detailed log of what Robert read and skipped, with clickable entries to verify his decisions.\r\n-   **Secure**: Uses **OAuth 2.0** to verify with Google. Your password specifically never touches this app.\r\n-   **Local**: Runs on your machine. Data stays with you.\r\n\r\n## Screenshots 📸\r\n\r\n| Main Feed | Activity Log |\r\n| :---: | :---: |\r\n| ![Main Feed](assets/screenshot1.jpg) | ![Activity Log](assets/screenshot2.jpg) |\r\n\r\n## Setup 🛠️\r\n\r\n### Prerequisites\r\n-   Python 3.8+\r\n-   A Google Cloud Project with the **Gmail API** enabled.\r\n-   An OAuth 2.0 Client ID (`credentials.json`) file from Google Cloud.\r\n\r\n### Installation\r\n\r\n1.  **Clone the repository:**\r\n    ```bash\r\n    git clone https://github.com/yourusername/robert-mail.git\r\n    cd robert-mail\r\n    ```\r\n\r\n2.  **Install dependencies:**\r\n    ```bash\r\n    pip install -r requirements.txt\r\n    ```\r\n\r\n3.  **Configure Credentials:**\r\n    -   Place your `credentials.json` file in the root directory.\r\n    -   **Important:** Do NOT share or commit this file.\r\n\r\n4.  **Run the App:**\r\n    ```bash\r\n    python app.py\r\n    ```\r\n    Open your browser to `http://localhost:3000`.\r\n\r\n## Tech Stack 💻\r\n-   **Backend:** Flask (Python)\r\n-   **Frontend:** Vanilla JS, HTML5, CSS3\r\n-   **Auth:** Google OAuth 2.0\r\n-   **API:** Gmail API (REST)\r\n\r\n## License\r\nMIT",
+    "readmeTitle": "Robert Mail AI",
+    "readmeDescription": "Robert is a personal AI email assistant that runs locally on your machine. It connects to your Gmail via the official API, reads your unread emails, and uses a local LLM to summarize them, categorize them, and even \"skip\" unimportant ones for you."
+  },
+  {
+    "repoUrl": "https://github.com/ChillzonToast/nitc-chatbot",
+    "title": "NITC Chatbot",
+    "description": "A chabot for nitc, with 2606 pages scraped from wiki.fosscell.org",
+    "stars": 1,
+    "forks": 0,
+    "language": "Python",
+    "topics": [],
+    "license": null,
+    "lastUpdated": "2026-04-05T21:32:51Z",
+    "screenshots": [
+      "/projects/nitc-chatbot/thumbnail.png"
+    ],
+    "thumbnail": "/projects/nitc-chatbot/thumbnail.png",
+    "website": null,
+    "authors": [
+      {
+        "login": "ChillzonToast",
+        "name": "Ibinu Jaleel",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/117560284?v=4",
+        "profileUrl": "https://github.com/ChillzonToast",
+        "bio": "i am ibinu"
+      }
+    ],
+    "submissionOrder": 7,
+    "readmeMarkdown": "# NITC Chatbot - powered by FOSSCell Wiki\r\n\r\nA Python-based chatbot that can answer questions about NIT Calicut using scraped wiki data. The project includes a web scraper to collect wiki pages and an AI-powered chatbot to provide intelligent responses.\r\n\r\n## Features\r\n\r\n- **Wiki Scraper**: Asynchronously scrapes FOSSCELL wiki pages (oldid 1-2606)\r\n- **AI Chatbot**: Uses AI-generated keywords to find relevant wiki pages and provide answers\r\n- **Web Interface**: Optional web-based chat interface\r\n- **Smart Search**: Weighted keyword matching for better search results\r\n\r\n## Setup Instructions\r\n\r\n### 1. Clone the Repository\r\n\r\n```bash\r\ngit clone <repository-url>\r\ncd wiki-scrap\r\n```\r\n\r\n### 2. Create a Virtual Environment\r\n\r\n```bash\r\n# Create a virtual environment\r\npython -m venv .venv\r\n\r\n# Activate the virtual environment\r\n# On Linux/macOS:\r\nsource .venv/bin/activate\r\n\r\n# On Windows:\r\n# .venv\\Scripts\\activate\r\n```\r\n\r\n### 3. Install Dependencies\r\n\r\n```bash\r\n# Install all required packages\r\npip install -r requirements.txt\r\n```\r\n\r\n### 4. Run the Chatbot\r\n\r\nThe chatbot uses pre-scraped wiki data stored in `wiki_data.json`. To start the chatbot:\r\n\r\n```bash\r\npython chatbot.py\r\n```\r\n\r\nThis will start an interactive chat session where you can ask questions about FOSSCELL.\r\n\r\n## Scraping Your Own Data\r\n\r\nIf you want to scrape the wiki data yourself or update the existing data:\r\n\r\n### 1. Modify the Scraper (Optional)\r\n\r\nOpen `scraper.py` and modify the `end_oldid` value on line 30:\r\n\r\n```python\r\n# Change from 2606 to your desired end page\r\nself.end_oldid = 2606  # Modify this value\r\n```\r\n\r\n### 2. Run the Scraper\r\n\r\n```bash\r\npython scraper.py\r\n```\r\n\r\n**Note**: The scraper will:\r\n- Start from where it left off if interrupted\r\n- Save progress every 50 pages\r\n- Use concurrent requests for faster scraping\r\n- Create/update `wiki_data.json` with scraped content\r\n- Automatically filter out pages matching patterns in `blacklist.txt`\r\n\r\n### 3. Blacklist (Optional)\r\n\r\nEdit `blacklist.txt` to add title patterns to filter out during scraping (one per line). The default includes:\r\n- `Module:` — removes all module pages\r\n- `Terms of Service` — removes terms of service pages\r\n\r\n### 4. Scraping Progress\r\n\r\nThe scraper shows real-time progress:\r\n- Current batch being processed\r\n- Pages collected so far\r\n- Progress percentage\r\n- Any errors encountered\r\n\r\nYou can stop the scraper anytime with `Ctrl+C` and resume later - it will continue from where it left off.\r\n\r\n## Project Structure\r\n\r\n```\r\nwiki-scrap/\r\n├── chatbot.py          # Main chatbot application\r\n├── scraper.py          # Wiki scraper (with blacklist filtering)\r\n├── blacklist.txt       # Title patterns to exclude from scraping\r\n├── requirements.txt    # Python dependencies\r\n├── wiki_data.json     # Scraped wiki data\r\n├── README.md          # This file\r\n└── .venv/             # Virtual environment (created during setup)\r\n```\r\n\r\n## Dependencies\r\n\r\nKey dependencies include:\r\n- `aiohttp`: Asynchronous HTTP client for scraping\r\n- `beautifulsoup4`: HTML parsing\r\n- `requests`: HTTP requests for AI API\r\n- `json`: Data serialization\r\n\r\nSee `requirements.txt` for the complete list.\r\n\r\n## Troubleshooting\r\n\r\n### Common Issues\r\n\r\n1. **Virtual Environment Not Activated**\r\n   - Make sure you see `(.venv)` in your terminal prompt\r\n   - Run `source .venv/bin/activate` (Linux/macOS) or `.venv\\Scripts\\activate` (Windows)\r\n\r\n2. **Missing Dependencies**\r\n   - Ensure you've run `pip install -r requirements.txt`\r\n   - Check that your virtual environment is activated\r\n\r\n3. **Wiki Data Not Found**\r\n   - Run the scraper first: `python scraper.py`\r\n   - Ensure `wiki_data.json` exists in the project directory\r\n\r\n4. **Scraping Errors**\r\n   - The scraper handles network errors gracefully\r\n   - It will continue from where it left off if interrupted\r\n   - Check your internet connection\r\n\r\n### Getting Help\r\n\r\nIf you encounter issues:\r\n1. Check that all dependencies are installed\r\n2. Ensure your virtual environment is activated\r\n3. Verify that `wiki_data.json` exists (run scraper if needed)\r\n4. Check the console output for error messages\r\n\r\n## Contributing\r\n\r\nWe welcome contributions to make this project better!\r\n\r\n### Goals for Contributors\r\n[ ] **Scrape NITC's official website**: Crawl nitc.ac.in and generate a huge dataset for the Chatbot to work with.\r\n\r\n[ ] **Run the AI Locally**: Replace the current remote AI API with a local AI model for keyword extraction and response generation.\r\n\r\n[ ] **Better Web Interface**: Improve or redesign the web interface for a more user-friendly and interactive experience.\r\n\r\nIf you have ideas, bug fixes, or improvements, feel free to open a Pull Request (PR)!\r\n\r\n**PRs are welcome!**\r\n",
+    "readmeTitle": "NITC Chatbot - powered by FOSSCell Wiki",
+    "readmeDescription": "A Pythonbased chatbot that can answer questions about NIT Calicut using scraped wiki data. The project includes a web scraper to collect wiki pages and an AIpowered chatbot to provide intelligent responses."
+  },
+  {
+    "repoUrl": "https://github.com/ChillzonToast/nitc_auth",
+    "title": "NITC Auth",
+    "description": "A user-friendly app to quickly authenticate to nitc network.",
+    "stars": 0,
+    "forks": 0,
+    "language": "Dart",
+    "topics": [],
+    "license": null,
+    "lastUpdated": "2026-01-22T06:22:50Z",
+    "screenshots": [
+      "/projects/nitc-auth/thumbnail.jpeg",
+      "/projects/nitc-auth/screenshot.jpeg"
+    ],
+    "thumbnail": "/projects/nitc-auth/thumbnail.jpeg",
+    "website": null,
+    "authors": [
+      {
+        "login": "ChillzonToast",
+        "name": "Ibinu Jaleel",
+        "avatarUrl": "https://avatars.githubusercontent.com/u/117560284?v=4",
+        "profileUrl": "https://github.com/ChillzonToast",
+        "bio": "i am ibinu"
+      }
+    ],
+    "submissionOrder": 8,
+    "readmeMarkdown": "# NITC Auth\r\n\r\nA premium, modern Flutter application for seamless authentication on the NIT Calicut network.\r\n\r\n## ✨ Features\r\n\r\n- **🚀 Smart Authentication**: Automatically detects and handles login for both **Hostel** and **Academic** zones.\r\n- **💎 Premium UI**: A sleek, unified dark theme with neon accents (`#00FF94`) and ambient \"frosted glass\" effects.\r\n- **⚡ Quick Settings Tile**: Connect or disconnect directly from your Android Quick Settings panel without opening the app.\r\n- **🔄 Roaming Mode**: Automatically checks and retries connection every 5 seconds—perfect for walking between WiFi zones.\r\n- **🔒 Secure**: Credentials are stored securely on your device using `SharedPreferences`.\r\n- **💾 Session Persistence**: Remembers your active session to ensure reliable logout capability.\r\n\r\n## 📱 Screenshots\r\n\r\n| Home (Connected) | Home (Disconnected) | Quick Tile |\r\n|:---:|:---:|:---:|\r\n| *(Add screenshot)* | *(Add screenshot)* | *(Add screenshot)* |\r\n\r\n## 🛠️ Installation\r\n\r\n### Prerequisites\r\n- Flutter SDK (v3.10 or later)\r\n- Android Studio / VS Code\r\n- Android Device (Min SDK 21)\r\n\r\n### Build Steps\r\n\r\n1. **Clone the repository:**\r\n   ```bash\r\n   git clone https://github.com/yourusername/nitc_auth.git\r\n   cd nitc_auth/nitc_auth_app\r\n   ```\r\n\r\n2. **Install dependencies:**\r\n   ```bash\r\n   flutter pub get\r\n   ```\r\n\r\n3. **Run on device:**\r\n   ```bash\r\n   flutter run\r\n   ```\r\n\r\n4. **Build Release APK:**\r\n   ```bash\r\n   flutter build apk --release\r\n   ```\r\n\r\n## 📖 Usage\r\n\r\n### Initial Setup\r\n1. Launch the app.\r\n2. Tap the **Settings** (Gear) icon in the top right.\r\n3. Enter your **NITC ID** (e.g., `user_b24xxxxcs`) and **Password**.\r\n4. Tap **Save** and return to the Home screen.\r\n\r\n### Connection\r\n- **Connect**: Tap the large \"CONNECT NOW\" button. The status pill will glow neon green when connected.\r\n- **Roam**: Toggle \"Roaming Mode\" if you are moving between locations. The app will autonomously retry connections.\r\n- **Disconnect**: Tap \"DISCONNECT\" to logout.\r\n\r\n### Quick Settings Tile Setup (Android)\r\n1. Swipe down twice to open the Quick Settings panel.\r\n2. Tap the **Edit** (Pencil) icon.\r\n3. Scroll down to find the **NITC Auth** tile.\r\n4. Drag it to your active tiles section.\r\n5. **Tap to Toggle**: Single tap to connect/disconnect instantly!\r\n\r\n## 🏗️ Architecture\r\n\r\n- **Frontend**: Flutter (Dart)\r\n- **Native Integration**: Kotlin (`TileService` for Quick Settings)\r\n- **Communication**: `MethodChannel` (`com.example.nitc_auth_app/tile`) handles intent-based communication between the native tile and the Flutter engine.\r\n- **Networking**: `http` package with custom retry logic and robust redirect handling.\r\n\r\n## 📄 License\r\n\r\nThis project is open source and available under the [MIT License](LICENSE).",
+    "readmeTitle": "NITC Auth",
+    "readmeDescription": "A premium, modern Flutter application for seamless authentication on the NIT Calicut network."
   }
 ]
