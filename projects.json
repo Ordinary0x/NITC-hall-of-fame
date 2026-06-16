@@ -33,5 +33,26 @@
     "authors": ["https://github.com/JissJanex"],
     "description": "An interactive React + TypeScript chess app with local PvP and a Stockfish-powered AI opponent.",
     "website": "https://chess-arena-steel.vercel.app/"
+  },
+  {
+    "title": "Robert Mail",
+    "project": "https://github.com/ChillzonToast/Robert-mail",
+    "authors": ["https://github.com/ChillzonToast"],
+    "description": "AI email client that has memory of what your interests are.",
+    "website": ""
+  },
+  {
+    "title": "NITC Chatbot",
+    "project": "https://github.com/ChillzonToast/nitc-chatbot",
+    "authors": ["https://github.com/ChillzonToast"],
+    "description": "A chabot for nitc, with 2606 pages scraped from wiki.fosscell.org",
+    "website": ""
+  },
+  {
+    "title": "NITC Auth",
+    "project": "https://github.com/ChillzonToast/nitc_auth",
+    "authors": ["https://github.com/ChillzonToast"],
+    "description": "A user-friendly app to quickly authenticate to nitc network. ",
+    "website": ""
   }
 ]
